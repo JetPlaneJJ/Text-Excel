@@ -4,7 +4,17 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
-
+	//Spreadsheet constructor Checkpoint 1
+	public Spreadsheet()
+	{
+		/*
+		 * Your Spreadsheet constructor should initialize a 2D array
+		 * of Cells with all elements containing EmptyCell objects.
+		 */
+		//TODO: fix this!
+		//EmptyCell[][] cellarray = new EmptyCell[][];
+	}
+	
 	@Override
 	public String processCommand(String command)
 	{

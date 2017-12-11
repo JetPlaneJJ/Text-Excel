@@ -18,7 +18,7 @@ public class TextExcel
 			String input = console.nextLine();
 			if (!input.equals("quit"))
 			{
-				spreadsheet.processCommand(input);
+				System.out.println(spreadsheet.processCommand(input));
 			}
 			else
 			{

@@ -7,7 +7,7 @@ public class SpreadsheetLocation implements Location
     //fields Checkpoint 1
 	private String cellName;
 	private int row;
-	private String col;
+	private int col;
 	
 	@Override
     public int getRow()
@@ -26,11 +26,10 @@ public class SpreadsheetLocation implements Location
     //Constructor for Checkpoint 1
     public SpreadsheetLocation(String cellName)
     {
-        // TODO: Fill this out with your own code
     	this.cellName = cellName;
-    	this.row = Integer.parseInt(this.cellName.substring(1)) + 1;
-    	//this.col = ?????
-    			//how do I convert letters to numbers?
+    	this.row = Integer.parseInt(this.cellName.substring(1)) - 1; //ex: B2's row index is 1 
+    	this.col = Spreadsheet.getColumnNumberFromColumnLetter(cellName); //gets the letter
+    			//TODO: how do I convert letters to numbers?
     }
 
 }

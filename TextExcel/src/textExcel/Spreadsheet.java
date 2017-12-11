@@ -12,7 +12,7 @@ public class Spreadsheet implements Grid
 		 * of Cells with all elements containing EmptyCell objects.
 		 */
 		//TODO: fix this!
-		//EmptyCell[][] cellarray = new EmptyCell[][];
+		Cell[][] EmptyCell = new Cell[20][12]; //12 columns 20 rows
 	}
 	
 	@Override
@@ -23,14 +23,14 @@ public class Spreadsheet implements Grid
 	}
 
 	@Override
-	public int getRows()
+	public int getRows() //must be correct for Ch1
 	{
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int getCols()
+	public int getCols() //must be correct for Ch1 
 	{
 		// TODO Auto-generated method stub
 		return 0;

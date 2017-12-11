@@ -12,15 +12,13 @@ public class SpreadsheetLocation implements Location
 	@Override
     public int getRow()
     {
-        // TODO Auto-generated method stub
         return this.row;
     }
 
     @Override
     public int getCol()
     {
-        // TODO Auto-generated method stub
-        return 0; //FIX THIS
+        return this.col;
     }
     
     //Constructor for Checkpoint 1

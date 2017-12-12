@@ -13,6 +13,8 @@ public class Spreadsheet implements Grid
 		 */
 		//TODO: fix this!
 		Cell[][] EmptyCell = new Cell[20][12]; //12 columns 20 rows
+		//outer = row
+		//inner = col
 	}
 	
 	@Override
@@ -26,14 +28,16 @@ public class Spreadsheet implements Grid
 	public int getRows() //must be correct for Ch1
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		SpreadsheetLocation x = new SpreadsheetLocation(null);
+		return x.getRow();
 	}
 
 	@Override
 	public int getCols() //must be correct for Ch1 
 	{
 		// TODO Auto-generated method stub
-		return 0;
+		SpreadsheetLocation x = new SpreadsheetLocation(null);
+		return x.getCol();
 	}
 
 	@Override

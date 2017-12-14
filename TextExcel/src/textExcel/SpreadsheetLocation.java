@@ -25,7 +25,6 @@ public class SpreadsheetLocation implements Location
     {
     	this.row = Integer.parseInt(cellName.substring(1)) - 1; //ex: B2's row index is 1 
     	this.col = Spreadsheet.getColumnNumberFromColumnLetter(cellName); //gets the letter
-    			//TODO: how do I convert letters to numbers?
     }
 
 }

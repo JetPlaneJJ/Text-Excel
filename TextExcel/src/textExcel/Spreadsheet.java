@@ -12,10 +12,7 @@ public class Spreadsheet implements Grid
 		 * Your Spreadsheet constructor should initialize a 2D array
 		 * of Cells with all elements containing EmptyCell objects.
 		 */
-		//TODO: fix this!
 		cellz = new Cell[20][12];
-		//outer = row
-		//inner = col
 		for (int x = 0; x < 20; x++)
 		{
 			for (int y = 0; y < 12; y++)
@@ -28,35 +25,30 @@ public class Spreadsheet implements Grid
 	@Override
 	public String processCommand(String command)
 	{
-		// TODO Auto-generated method stub
 		return "";
 	}
 
 	@Override
 	public int getRows() //must be correct for Ch1
 	{
-		// TODO Auto-generated method stub
 		return 20;
 	}
 
 	@Override
 	public int getCols() //must be correct for Ch1 
 	{
-		// TODO Auto-generated method stub
 		return 12;
 	}
 
 	@Override
 	public Cell getCell(Location loc)
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getGridText()
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

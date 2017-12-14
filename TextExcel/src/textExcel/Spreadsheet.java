@@ -4,6 +4,7 @@ package textExcel;
 
 public class Spreadsheet implements Grid
 {
+	private Cell[][] cellz;
 	//Spreadsheet constructor Checkpoint 1
 	public Spreadsheet()
 	{
@@ -12,9 +13,16 @@ public class Spreadsheet implements Grid
 		 * of Cells with all elements containing EmptyCell objects.
 		 */
 		//TODO: fix this!
-		Cell[][] EmptyCell = new Cell[20][12]; //12 columns 20 rows
+		cellz = new Cell[20][12];
 		//outer = row
 		//inner = col
+		for (int x = 0; x < 20; x++)
+		{
+			for (int y = 0; y < 12; y++)
+			{
+				cellz[x][y] = new EmptyCell();
+			}
+		}
 	}
 	
 	@Override

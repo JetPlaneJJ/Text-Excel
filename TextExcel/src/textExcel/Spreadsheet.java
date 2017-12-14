@@ -36,16 +36,14 @@ public class Spreadsheet implements Grid
 	public int getRows() //must be correct for Ch1
 	{
 		// TODO Auto-generated method stub
-		SpreadsheetLocation x = new SpreadsheetLocation(null);
-		return x.getRow();
+		return 20;
 	}
 
 	@Override
 	public int getCols() //must be correct for Ch1 
 	{
 		// TODO Auto-generated method stub
-		SpreadsheetLocation x = new SpreadsheetLocation(null);
-		return x.getCol();
+		return 12;
 	}
 
 	@Override

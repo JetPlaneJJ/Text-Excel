@@ -36,7 +36,15 @@ public class Spreadsheet implements Grid
 	}
 	public Cell getCell(Location loc)
 	{
-		return null;
+		if (true) //not empty
+		{
+			return null;
+		}
+		else //if empty
+		{
+			Cell x = new EmptyCell();
+			return x;
+		}
 	}
 	/*public String getGridText()
 	{
@@ -68,7 +76,8 @@ public class Spreadsheet implements Grid
 		/* Return a string containing the entire sheet 
 		 * grid in the form described in the spec.
 		*/
-		String grid = "";
+		String grid = "   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |";
+		grid += 	"/n1  |";
 		return null;
 	}
 	public String processCommand(String command)
@@ -100,6 +109,10 @@ public class Spreadsheet implements Grid
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(cellspecific.substring(1));
 			cellz[row][column] = new EmptyCell();
+		}
+		else
+		{
+			return "";
 		}
 		return "";
 	}

@@ -68,26 +68,38 @@ public class Spreadsheet implements Grid
 		/* Return a string containing the entire sheet 
 		 * grid in the form described in the spec.
 		*/
-		String grid = " ";
+		String grid = "";
 		return null;
 	}
 	public String processCommand(String command)
 	{
-		//cell inspection. This should return the value at that cell.
 		if (command.equals("clear"))
 		{
-			//clear the entire grid
-			
+			//clear the entire grid. maybe insert EmptyCell in each array element?
+			for (int row = 0; row < cellz.length; row++)
+			{
+				for (int col = 0; col < cellz[row].length; col++)
+				{
+					cellz[row][col] = new EmptyCell();
+				}
+			}	
 		}
 		else if (command.length() <= 3) //if just "A1" or "C15"
 		{
 			//cell inspection
+			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
+			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
+			int row = Integer.parseInt(cellspecific.substring(1));
+			//go to that cell??
 			
 		}
 		else if (command.indexOf("clear ") != -1) //clear with a space
 		{
 			//clearing a particular cell
-			
+			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
+			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
+			int row = Integer.parseInt(cellspecific.substring(1));
+			cellz[row][column] = new EmptyCell();
 		}
 		return "";
 	}

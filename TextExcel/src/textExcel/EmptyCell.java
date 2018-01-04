@@ -2,15 +2,20 @@ package textExcel;
 
 public class EmptyCell implements Cell
 {
+	public EmptyCell()
+	{
+		super();
+		
+	}
 	public String abbreviatedCellText()
 	{
 		
-		return null;
+		return "";
 		// text for spreadsheet cell display, must be exactly length 10
 	}
 	public String fullCellText()
 	{
 		
-		return null;
+		return "";
 	}
 }

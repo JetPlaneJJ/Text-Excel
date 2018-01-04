@@ -9,12 +9,12 @@ public class TextCell implements Cell
 	public String abbreviatedCellText()
 	{
 		
-		return null;
+		return "";
 	}
 	public String fullCellText()
 	{
 		
-		return null;
+		return "";
 	}
 	
 }

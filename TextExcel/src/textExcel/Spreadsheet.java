@@ -1,17 +1,10 @@
 package textExcel;
 
-// Update this file with your own code.
-
 public class Spreadsheet implements Grid
 {
 	private Cell[][] cellz;
-//Spreadsheet constructor Checkpoint 1
 	public Spreadsheet()
 	{
-		/*
-		 * Your Spreadsheet constructor should initialize a 2D array
-		 * of Cells with all elements containing EmptyCell objects.
-		 */
 		cellz = new Cell[20][12];
 		for (int x = 0; x < 20; x++)
 		{
@@ -21,63 +14,56 @@ public class Spreadsheet implements Grid
 			}
 		}
 	}
-	/*public String processCommand(String command)
-	{
-		//from Checkpoint 1, DO NOT USE!
-		return "";
-	}*/
-	public int getRows() //must be correct for Ch1
+	public int getRows() 
 	{
 		return 20;
 	}
-	public int getCols() //must be correct for Ch1 
+	public int getCols() 
 	{
 		return 12;
 	}
 	public Cell getCell(Location loc)
 	{
-		if (true) //not empty
+		if (true) 
 		{
 			return null;
 		}
-		else //if empty
+		else 
 		{
 			Cell x = new EmptyCell();
 			return x;
 		}
 	}
-	/*public String getGridText()
-	{
-		//From checkpoint 1, do NOT USE!
-		return null;
-	}*/
-	
-	// You are free to use this helper method.  It takes a column letter (starting at "A")
-	// and returns the column number corresponding to that letter (0 for "A", 1 for "B", etc.)  
-	// WARNING!!  If the parameter is not a single, capital letter in the range of your Spreadsheet,
-	// bad things might happen!
 	public static int getColumnNumberFromColumnLetter(String columnLetter)
 	{
 		return Character.toUpperCase(columnLetter.charAt(0)) - 'A';
 	}
-	// You are free to use this helper method.  It takes a column number (starting at 0)
-	// and returns the column letter corresponding to that number ("A" for 0, "B" for 1, etc.)
-	// WARNING!!  If the parameter is not a number in the range of your Spreadsheet,
-	// bad things might happen!
 	public static String getColumnLetterFromColumnNumber(int columnNumber)
 	{
 		return "" + (char) ('A' + columnNumber);
 	}
 	
-// Checkpoint 2 methods
+// Checkpoint 2 
 	public String getGridText()
 	{
 		//12 col x 20 row
-		/* Return a string containing the entire sheet 
-		 * grid in the form described in the spec.
-		*/
 		String grid = "   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |";
-		grid += 	"/n1  |";
+		for (int row = 0; row < 20; row++)
+		{
+			if (row <=9)
+			{
+				grid += "/n" + row + "  |" ; //2 spaces
+				//ex: (newline) 1  |
+			}
+			else
+			{
+				grid += "/n" + row + " |"; //only 1 space
+			}
+			for (int col = 0; col < 20; col++)
+			{
+				grid += cellz[row][col] + "|"; //each must be 10 spaces long no matter what
+			}
+		}
 		return null;
 	}
 	public String processCommand(String command)

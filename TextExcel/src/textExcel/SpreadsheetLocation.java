@@ -13,8 +13,6 @@ public class SpreadsheetLocation implements Location
     {
         return this.row;
     }
-
-    @Override
     public int getCol()
     {
         return this.col;

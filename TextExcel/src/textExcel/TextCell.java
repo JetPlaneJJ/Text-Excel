@@ -31,14 +31,14 @@ public class TextCell implements Cell
 	}
 	public String fullCellText()
 	{
-		if (!(string.indexOf(" ") == -1))
+		/*if (!(string.indexOf(" ") == -1))
 		{
 			return string.substring(0, string.indexOf(" "));
 		}
 		else
-		{
+		{*/
 			return string;
-		}
+		//}
 	}
 	
 }

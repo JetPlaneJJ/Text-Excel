@@ -71,7 +71,7 @@ public class Spreadsheet implements Grid
 	}
 	public String processCommand(String command)
 	{
-		if (command.equals("clear"))
+		if (command.toLowerCase().equals("clear"))
 		{
 			//clear the entire grid. maybe insert EmptyCell in each array element?
 			for (int row = 0; row < cellz.length; row++)
@@ -100,7 +100,7 @@ public class Spreadsheet implements Grid
 			}
 			
 		}
-		else if (command.indexOf("clear ") != -1) //clearing a particular cell
+		else if (command.toLowerCase().indexOf("clear ") != -1) //clearing a particular cell
 		{
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));

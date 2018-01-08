@@ -101,11 +101,11 @@ public class Spreadsheet implements Grid
 		}
 		else if (command.indexOf(" = ") != -1) //assignment
 		{
+			//A1 = "first"
 			//next time... use the split method...
-			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
-			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
-			int row = Integer.parseInt(cellspecific.substring(1));
-			String input = command.substring(command.indexOf(" = ") + 2, command.length()-1);
+			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+			int row = Integer.parseInt(command.substring(1,2));
+			String input = command.substring(command.indexOf("=") + 3, command.length()-1);
 			cellz[row][column] = new TextCell(input);
 				
 			String result = getGridText();

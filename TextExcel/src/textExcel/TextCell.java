@@ -13,8 +13,13 @@ public class TextCell implements Cell
 
 	public String abbreviatedCellText()
 	{
+		int spacesneeded = 10 - string.length();
 		
-		return string + "";
+		for (int x = 0; x < spacesneeded; x++)
+		{
+			string += " ";
+		}
+		return string;
 	}
 	public String fullCellText()
 	{

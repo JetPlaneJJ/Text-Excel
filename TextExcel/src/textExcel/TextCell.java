@@ -5,20 +5,21 @@ public class TextCell implements Cell
 {
 	//A TextCell stores string values.
 	private String string = "";
-	public TextCell()
+	public TextCell(String input)
 	{
-		super();
+		this.string = input;
+		
 	}
-	
+
 	public String abbreviatedCellText()
 	{
 		
-		return "          ";
+		return string + "";
 	}
 	public String fullCellText()
 	{
 		
-		return "";
+		return string + "";
 	}
 	
 }

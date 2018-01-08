@@ -24,9 +24,9 @@ public class Spreadsheet implements Grid
 	}
 	public Cell getCell(Location loc)
 	{
-		if (true) 
+		if (!cellz[loc.getRow()][loc.getCol()].equals("")) 
 		{
-			return null;
+			return cellz[loc.getRow()][loc.getCol()];
 		}
 		else 
 		{
@@ -77,7 +77,9 @@ public class Spreadsheet implements Grid
 				{
 					cellz[row][col] = new EmptyCell();
 				}
-			}	
+			}
+			String result = getGridText();
+			return result;
 		}
 		else if (command.length() <= 3) //if just "A1" or "C15"
 		{
@@ -85,22 +87,34 @@ public class Spreadsheet implements Grid
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(cellspecific.substring(1));
-			//go to that cell??
+			return cellz[row][column].abbreviatedCellText();
 			
 		}
-		else if (command.indexOf("clear ") != -1) //clear with a space
+		else if (command.indexOf("clear ") != -1) //clearing a particular cell
 		{
-			//clearing a particular cell
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(cellspecific.substring(1));
 			cellz[row][column] = new EmptyCell();
+			String result = getGridText();
+			return result;
+		}
+		else if (command.indexOf(" = ") != -1) //assignment
+		{
+			//next time... use the split method...
+			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
+			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
+			int row = Integer.parseInt(cellspecific.substring(1));
+			String input = command.substring(command.indexOf(" = ") + 2, command.length()-1);
+			cellz[row][column] = new TextCell(input);
+				
+			String result = getGridText();
+			return result;
 		}
 		else
 		{
 			return "";
 		}
-		return "";
 	}
 	
 }

@@ -64,6 +64,7 @@ public class Spreadsheet implements Grid
 				grid += cellz[row][col].abbreviatedCellText() + "|"; //each must be 10 spaces long no matter what
 			}
 		}
+		grid += "\n";
 		return grid;
 	}
 	public String processCommand(String command)

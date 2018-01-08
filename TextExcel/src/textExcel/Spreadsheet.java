@@ -93,7 +93,7 @@ public class Spreadsheet implements Grid
 			}
 			else
 			{
-				return cellz[row][column].abbreviatedCellText().substring(0, cellz[row][column].abbreviatedCellText().indexOf(" "));
+				return "\"" + cellz[row][column].abbreviatedCellText().substring(0, cellz[row][column].abbreviatedCellText().indexOf(" ")) + "\"";
 			}
 			
 		}

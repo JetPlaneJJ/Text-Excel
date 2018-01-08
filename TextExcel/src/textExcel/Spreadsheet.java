@@ -59,9 +59,9 @@ public class Spreadsheet implements Grid
 			{
 				grid += "/n" + row + " |"; //only 1 space
 			}
-			for (int col = 0; col < 20; col++)
+			for (int col = 0; col < 12; col++)
 			{
-				grid += cellz[row][col] + "|"; //each must be 10 spaces long no matter what
+				grid += cellz[row][col].abbreviatedCellText() + "|"; //each must be 10 spaces long no matter what
 			}
 		}
 		return null;

@@ -8,30 +8,37 @@ public class TextCell implements Cell
 	public TextCell(String input)
 	{
 		this.string = input;
-		
 	}
 
 	public String abbreviatedCellText()
 	{
 		int spacesneeded = 10 - string.length();
 		
-		if (string.length() < 10)
+		String result = this.string;
+		if (result.length() < 10)
 		{
 			for (int x = 0; x < spacesneeded; x++)
 			{
-				string += " ";
+				result += " ";
 			}
 		}
-		else if (string.length() > 10)
+		else if (result.length() > 10)
 		{
-			string = string.substring(0, 10);
+			result = result.substring(0, 10);
 		}
 		
-		return string;
+		return result;
 	}
 	public String fullCellText()
 	{
-		return string.substring(0, string.indexOf(" "));
+		if (string.length() < 10)
+		{
+			return string.substring(0, string.indexOf(" "));
+		}
+		else
+		{
+			return string;
+		}
 	}
 	
 }

@@ -50,21 +50,21 @@ public class Spreadsheet implements Grid
 		String grid = "   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |";
 		for (int row = 0; row < 20; row++)
 		{
-			if (row <=9)
+			if (row <= 9)
 			{
-				grid += "/n" + row + "  |" ; //2 spaces
+				grid += "\n" + row + "  |" ; //2 spaces
 				//ex: (newline) 1  |
 			}
 			else
 			{
-				grid += "/n" + row + " |"; //only 1 space
+				grid += "\n" + row + " |"; //only 1 space
 			}
 			for (int col = 0; col < 12; col++)
 			{
 				grid += cellz[row][col].abbreviatedCellText() + "|"; //each must be 10 spaces long no matter what
 			}
 		}
-		return null;
+		return grid;
 	}
 	public String processCommand(String command)
 	{

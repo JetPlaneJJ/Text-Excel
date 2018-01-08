@@ -81,7 +81,7 @@ public class Spreadsheet implements Grid
 			String result = getGridText();
 			return result;
 		}
-		else if (command.length() <= 3) //if just "A1" or "C15"
+		else if (command.length() <= 3 && command.length() > 0) //if just "A1" or "C15"
 		{
 			//cell inspection
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1

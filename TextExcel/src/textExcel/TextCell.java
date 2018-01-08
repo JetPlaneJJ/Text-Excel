@@ -15,10 +15,18 @@ public class TextCell implements Cell
 	{
 		int spacesneeded = 10 - string.length();
 		
-		for (int x = 0; x < spacesneeded; x++)
+		if (string.length() < 10)
 		{
-			string += " ";
+			for (int x = 0; x < spacesneeded; x++)
+			{
+				string += " ";
+			}
 		}
+		else if (string.length() > 10)
+		{
+			string = string.substring(0, 10);
+		}
+		
 		return string;
 	}
 	public String fullCellText()

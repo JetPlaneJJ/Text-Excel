@@ -5,8 +5,8 @@ public class Spreadsheet implements Grid
 	private Cell[][] cellz;
 	public Spreadsheet()
 	{
-		cellz = new Cell[20][12];
-		for (int x = 0; x < 20; x++)
+		cellz = new Cell[21][12];
+		for (int x = 0; x < 21; x++)
 		{
 			for (int y = 0; y < 12; y++)
 			{
@@ -48,7 +48,7 @@ public class Spreadsheet implements Grid
 	{
 		//12 col x 20 row
 		String grid = "   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |";
-		for (int row = 0; row < 20; row++)
+		for (int row = 1; row < 21; row++)
 		{
 			if (row <= 9)
 			{
@@ -87,7 +87,14 @@ public class Spreadsheet implements Grid
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(cellspecific.substring(1));
-			return cellz[row][column].abbreviatedCellText();
+			if (cellz[row][column].abbreviatedCellText().equals("          "))
+			{
+				return "";
+			}
+			else
+			{
+				return cellz[row][column].abbreviatedCellText();
+			}
 			
 		}
 		else if (command.indexOf("clear ") != -1) //clearing a particular cell

@@ -88,13 +88,13 @@ public class Spreadsheet implements Grid
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(cellspecific.substring(1));
-			if (cellz[row][column].abbreviatedCellText().equals("          "))
+			if (cellz[row][column].fullCellText().equals("          "))
 			{
 				return "";
 			}
 			else
 			{
-				return "\"" + cellz[row][column].abbreviatedCellText().substring(0, cellz[row][column].abbreviatedCellText().indexOf(" ")) + "\"";
+				return "\"" + cellz[row][column].fullCellText() + "\"";
 			}
 			
 		}

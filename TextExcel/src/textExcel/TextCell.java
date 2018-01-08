@@ -31,8 +31,7 @@ public class TextCell implements Cell
 	}
 	public String fullCellText()
 	{
-		
-		return string + "";
+		return string.substring(0, string.indexOf(" "));
 	}
 	
 }

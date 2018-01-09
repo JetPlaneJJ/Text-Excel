@@ -25,9 +25,7 @@ public class Spreadsheet implements Grid
 	}
 	public Cell getCell(Location loc)
 	{
-		
 		return cellz[loc.getRow()][loc.getCol()];
-		/*return cellz[loc.getRow()][loc.getCol()];*/
 	}
 	
 	public static int getColumnNumberFromColumnLetter(String columnLetter)
@@ -44,7 +42,7 @@ public class Spreadsheet implements Grid
 	{
 		//12 col x 20 row
 		String grid = "   |A         |B         |C         |D         |E         |F         |G         |H         |I         |J         |K         |L         |";
-		for (int row = 1; row < 21; row++)
+		for (int row = 1; row <= 20; row++)
 		{
 			if (row <= 9)
 			{
@@ -81,13 +79,11 @@ public class Spreadsheet implements Grid
 		else if (command.length() <= 3 && command.length() > 0) //if just "A1" or "C15"
 		{
 			//cell inspection
-			//maybe use the getCell
-			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
-			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
+			//maybe use the getCell?
+			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 			int row = Integer.parseInt(command.substring(1));
 			if (cellz[row][column].fullCellText().equals("          ")) //if this cell is empty
 			{
-				cellz[row][column] = new EmptyCell();
 				return "";
 			}
 			else
@@ -101,20 +97,19 @@ public class Spreadsheet implements Grid
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(cellspecific.substring(1));
+			
 			cellz[row][column] = new EmptyCell();
 			String result = getGridText();
 			return result;
 		}
-		else if (command.indexOf(" = ") != -1 && command.indexOf("\"") != -1) //assignment of a VALUE (not to another cell)
+		else if (command.indexOf(" = ") != -1 && command.indexOf("\"") != -1) //assignment to a TEXTCELL
 		{
 			String[] split = command.split(" ");
 			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 			int row = Integer.parseInt(split[0].substring(1));
 			String input = command.substring(command.indexOf("=") + 3, command.length()-1);
 			
-			cellz[row][column] = new TextCell(input); //that's an assumption that it is a text cell, not something else
-			
-			
+			cellz[row][column] = new TextCell(input); 
 			String result = getGridText();
 			return result;
 		}

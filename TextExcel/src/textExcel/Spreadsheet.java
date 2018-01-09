@@ -25,6 +25,7 @@ public class Spreadsheet implements Grid
 	}
 	public Cell getCell(Location loc)
 	{
+		
 			return cellz[loc.getRow()][loc.getCol()];
 		/*return cellz[loc.getRow()][loc.getCol()];*/
 	}
@@ -83,7 +84,7 @@ public class Spreadsheet implements Grid
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(command.substring(1));
-			if (cellz[row][column].abbreviatedCellText().equals("          "))
+			if (cellz[row][column].fullCellText().equals("          "))
 			{
 				return "";
 			}

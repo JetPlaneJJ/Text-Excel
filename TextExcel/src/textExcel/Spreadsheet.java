@@ -26,7 +26,7 @@ public class Spreadsheet implements Grid
 	public Cell getCell(Location loc)
 	{
 		
-			return cellz[loc.getRow()][loc.getCol()];
+		return cellz[loc.getRow()][loc.getCol()];
 		/*return cellz[loc.getRow()][loc.getCol()];*/
 	}
 	
@@ -81,16 +81,21 @@ public class Spreadsheet implements Grid
 		else if (command.length() <= 3 && command.length() > 0) //if just "A1" or "C15"
 		{
 			//cell inspection
+			//maybe use the getCell
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(command.substring(1));
-			if (cellz[row][column].fullCellText().equals("          "))
+			if (cellz[row][column].isEmptyCell()) //if this cell is empty
 			{
 				return "";
 			}
-			else
+			else if (!cellz[row][column].fullCellText().equals(""))
 			{
 				return "\"" + cellz[row][column].fullCellText() + "\"";
+			}
+			else
+			{
+				return "";
 			}
 			
 		}
@@ -105,14 +110,14 @@ public class Spreadsheet implements Grid
 		}
 		else if (command.indexOf(" = ") != -1) //assignment
 		{
-			//A1 = "first"
-			//next time... use the split method...
 			String[] split = command.split(" ");
 			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 			int row = Integer.parseInt(split[0].substring(1));
 			String input = command.substring(command.indexOf("=") + 3, command.length()-1);
-			cellz[row][column] = new TextCell(input);
-				
+			
+			cellz[row][column] = new TextCell(input); //that's an assumption that it is a text cell, not something else
+			
+			
 			String result = getGridText();
 			return result;
 		}

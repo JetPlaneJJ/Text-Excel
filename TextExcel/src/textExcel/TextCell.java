@@ -1,6 +1,5 @@
 package textExcel;
 
-//Checkpoint 2 TextCell class
 public class TextCell implements Cell
 {
 	//A TextCell stores string values.
@@ -31,14 +30,10 @@ public class TextCell implements Cell
 	}
 	public String fullCellText()
 	{
-		/*if (!(string.indexOf(" ") == -1))
-		{
-			return string.substring(0, string.indexOf(" "));
-		}
-		else
-		{*/
 			return string;
-		//}
 	}
-	
+	public boolean isEmptyCell()
+	{
+		return false;
+	}
 }

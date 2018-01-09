@@ -67,7 +67,7 @@ public class Spreadsheet implements Grid
 	{
 		if (command.toLowerCase().equals("clear"))
 		{
-			//clear the entire grid. maybe insert EmptyCell in each array element?
+			//clear the entire grid
 			for (int row = 0; row < cellz.length; row++)
 			{
 				for (int col = 0; col < cellz[row].length; col++)
@@ -87,6 +87,7 @@ public class Spreadsheet implements Grid
 			int row = Integer.parseInt(command.substring(1));
 			if (cellz[row][column].fullCellText().equals("          ")) //if this cell is empty
 			{
+				cellz[row][column] = new EmptyCell();
 				return "";
 			}
 			else

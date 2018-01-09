@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class TextExcel
 {
-
 	public static void main(String[] args)
 	{
 	    // Add your command loop here

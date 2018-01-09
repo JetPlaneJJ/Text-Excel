@@ -18,8 +18,4 @@ public class EmptyCell implements Cell
 		
 		return "          "; 	
 	}
-	public boolean isEmptyCell()
-	{
-		return true;
-	}
 }

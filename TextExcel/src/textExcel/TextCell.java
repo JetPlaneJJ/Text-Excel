@@ -32,8 +32,4 @@ public class TextCell implements Cell
 	{
 			return string;
 	}
-	public boolean isEmptyCell()
-	{
-		return false;
-	}
 }

@@ -85,17 +85,13 @@ public class Spreadsheet implements Grid
 			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
 			int row = Integer.parseInt(command.substring(1));
-			if (cellz[row][column].isEmptyCell()) //if this cell is empty
+			if (cellz[row][column].fullCellText().equals("          ")) //if this cell is empty
 			{
 				return "";
-			}
-			else if (!cellz[row][column].fullCellText().equals(""))
-			{
-				return "\"" + cellz[row][column].fullCellText() + "\"";
 			}
 			else
 			{
-				return "";
+				return "\"" + cellz[row][column].fullCellText() + "\"";
 			}
 			
 		}
@@ -108,7 +104,7 @@ public class Spreadsheet implements Grid
 			String result = getGridText();
 			return result;
 		}
-		else if (command.indexOf(" = ") != -1) //assignment
+		else if (command.indexOf(" = ") != -1 && command.indexOf("\"") != -1) //assignment of a VALUE (not to another cell)
 		{
 			String[] split = command.split(" ");
 			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));

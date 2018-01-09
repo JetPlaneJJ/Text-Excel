@@ -25,7 +25,7 @@ public class Spreadsheet implements Grid
 	}
 	public Cell getCell(Location loc)
 	{
-		if (!cellz[loc.getRow()][loc.getCol()].equals("")) 
+		if (!cellz[loc.getRow()][loc.getCol()].equals("          ")) 
 		{
 			return cellz[loc.getRow()][loc.getCol()];
 		}

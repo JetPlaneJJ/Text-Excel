@@ -56,7 +56,7 @@ public class Spreadsheet implements Grid
 			}
 			for (int col = 0; col < 12; col++)
 			{
-				grid += cellz[row][col].abbreviatedCellText() + "|"; //each must be 10 spaces long no matter what
+				grid += cellz[row][col].abbreviatedCellText() + "|"; 
 			}
 		}
 		grid += "\n";
@@ -77,13 +77,12 @@ public class Spreadsheet implements Grid
 			String result = getGridText();
 			return result;
 		}
-		else if (command.length() <= 3 && command.length() > 0) //if just "A1" or "C15"
+		else if (command.length() <= 3 && command.length() > 0)
 		{
 			//cell inspection
-			//maybe use the getCell?
 			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-			int row = Integer.parseInt(command.substring(1)) -1; //changed this
-			if (cellz[row][column].fullCellText().equals("          ")) //if this cell is empty
+			int row = Integer.parseInt(command.substring(1)) -1; 
+			if (cellz[row][column].fullCellText().equals("          ")) //if cell empty
 			{
 				return "";
 			}
@@ -93,12 +92,11 @@ public class Spreadsheet implements Grid
 			}
 			
 		}
-		else if (command.toLowerCase().indexOf("clear ") != -1) //clearing a particular cell
+		else if (command.toLowerCase().indexOf("clear ") != -1) //clearing 1 cell
 		{
-			String cellspecific = command.substring(command.indexOf(" ") + 1); //ex: clear A1 >> cellspecific = A1
+			String cellspecific = command.substring(command.indexOf(" ") + 1);
 			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
-			int row = Integer.parseInt(cellspecific.substring(1)) -1; //changed this
-			
+			int row = Integer.parseInt(cellspecific.substring(1)) -1;			
 			cellz[row][column] = new EmptyCell();
 			String result = getGridText();
 			return result;
@@ -107,7 +105,7 @@ public class Spreadsheet implements Grid
 		{
 			String[] split = command.split(" ");
 			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-			int row = Integer.parseInt(split[0].substring(1)) - 1; //changed this
+			int row = Integer.parseInt(split[0].substring(1)) - 1; 
 			String input = command.substring(command.indexOf("=") + 3, command.length()-1);
 			
 			cellz[row][column] = new TextCell(input); 

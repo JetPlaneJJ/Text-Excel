@@ -25,16 +25,15 @@ public class Spreadsheet implements Grid
 	}
 	public Cell getCell(Location loc)
 	{
-		/*if (!cellz[loc.getRow()][loc.getCol()].equals("          ")) 
+		if (!cellz[loc.getRow()][loc.getCol()].getClass().equals(obj)) 
 		{
 			return cellz[loc.getRow()][loc.getCol()];
 		}
 		else 
 		{
-			Cell x = new EmptyCell();
-			return x;
-		}*/
-		return cellz[loc.getRow()][loc.getCol()];
+			
+		}
+		/*return cellz[loc.getRow()][loc.getCol()];*/
 	}
 	
 	public static int getColumnNumberFromColumnLetter(String columnLetter)

@@ -119,14 +119,13 @@ public class Spreadsheet implements Grid
 		//Checkpoint 3 section
 		else if (command.indexOf("(") > -1) //if VALUECELL
 		{
-			
-		}
-		else if (command.indexOf(ch))
-		
-		else
-		{
 			return "";
 		}
+		/*else if (command.indexOf(ch))
+		{
+		
+		}*/
+		return "";
 	}
 	
 }

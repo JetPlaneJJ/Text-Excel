@@ -16,4 +16,18 @@ public class FormulaCell extends RealCell
 		return 0; //this is only okay for Checkpoint 3
 	}
 
+	@Override
+	public String abbreviatedCellText()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String fullCellText()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

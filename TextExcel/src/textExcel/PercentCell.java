@@ -35,14 +35,6 @@ public class PercentCell extends RealCell
 		}
 		return r;
 	}
-
-	/*\@Override 
-	 * TODO: fix this later!!!
-	public double getDoubleValue()
-	{
-		return resultvalue;
-	}*/
-
 	
 	@Override
 	public String fullCellText()
@@ -50,6 +42,13 @@ public class PercentCell extends RealCell
 		/*return decimal.substring(0,1) + "%"; //ex: 9.55681% turns into 9%
 		 */ 
 		return resultstring;
+	}
+
+	@Override
+	public double getDoubleValue()
+	{
+		// TODO Auto-generated method stub
+		return resultvalue;
 	}
 
 }

@@ -101,17 +101,28 @@ public class Spreadsheet implements Grid
 			String result = getGridText();
 			return result;
 		}
-		else if (command.indexOf(" = ") != -1 && command.indexOf("\"") != -1) //assignment to a TEXTCELL
+		else if (command.indexOf(" = ") != -1) //assignment to any cell
 		{
-			String[] split = command.split(" ");
-			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-			int row = Integer.parseInt(split[0].substring(1)) - 1; 
-			String input = command.substring(command.indexOf("=") + 3, command.length()-1);
+			if (command.indexOf("\"") != -1)
+			{
+				String[] split = command.split(" ");
+				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+				int row = Integer.parseInt(split[0].substring(1)) - 1; 
+				String input = command.substring(command.indexOf("=") + 3, command.length()-1);
+				
+				cellz[row][column] = new TextCell(input); 
+				String result = getGridText();
+				return result;
+			}
 			
-			cellz[row][column] = new TextCell(input); 
-			String result = getGridText();
-			return result;
 		}
+		//Checkpoint 3 section
+		else if (command.indexOf("(") > -1) //if VALUECELL
+		{
+			
+		}
+		else if (command.indexOf(ch))
+		
 		else
 		{
 			return "";

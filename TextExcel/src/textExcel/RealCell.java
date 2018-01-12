@@ -1,6 +1,6 @@
 package textExcel;
 
-public class RealCell implements Cell
+public abstract class RealCell implements Cell
 {
 	private String string = "";
 	
@@ -9,30 +9,11 @@ public class RealCell implements Cell
 		this.string = input;
 	}
 	
-	@Override
-	public String abbreviatedCellText()
-	{
-		//copied from TextCell method
-		int spacesneeded = 10 - string.length();
-		String result = this.string;
-		if (result.length() < 10)
-		{
-			for (int x = 0; x < spacesneeded; x++)
-			{
-				result += " ";
-			}
-		}
-		else if (result.length() > 10)
-		{
-			result = result.substring(0, 10);
-		}
-		return result;
-	}
+	public abstract String abbreviatedCellText();
 
-	@Override
-	public String fullCellText()
-	{
-		return string;
-	}
+	public abstract String fullCellText();
+	
+	//It also needs a getDoubleValue method that returns the calculated value of the cell.
+	public abstract double getDoubleValue();
 
 }

@@ -7,7 +7,7 @@ public class ValueCell extends RealCell
 	public ValueCell(String input)
 	{
 		super(input);
-		input = this.string;
+		this.string = input;
 		this.value = Double.parseDouble(input);
 	}
 	

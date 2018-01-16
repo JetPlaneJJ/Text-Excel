@@ -103,7 +103,7 @@ public class Spreadsheet implements Grid
 		}
 		else if (command.indexOf(" = ") != -1) //assignment to any cell
 		{
-			if (command.indexOf("\"") != -1) //assign TextCell
+			if (command.indexOf("\"") != -1) //assign TextCell ex: A1 = "something"
 			{
 				String[] split = command.split(" ");
 				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
@@ -116,36 +116,45 @@ public class Spreadsheet implements Grid
 			}
 			else if (command.indexOf("(") != -1) //formula cell, fix this
 			{
-				String[] split = command.split(" ");
+				/*String[] split = command.split(" ");
 				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 				int row = Integer.parseInt(split[0].substring(1)) - 1; 
 				String input = command.substring(command.indexOf("=") + 3, command.length()-1);
 				
 				cellz[row][column] = new FormulaCell(input); 
+				String result = getGridText();*/ 
+				//Do not use the above. Will fix in a later checkpoint (Quarter 2)
+				return "blah";
+				
+			}
+			else if (command.indexOf("%") != -1) //percent cell ex: A1 = 45.0%
+			{
+				String[] split = command.split(" ");
+				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+				int row = Integer.parseInt(split[0].substring(1)) - 1; 
+				String input = command.substring(command.indexOf("=") + 2, command.length() - 1);
+				
+				cellz[row][column] = new PercentCell(input); 
 				String result = getGridText();
 				return result;
-				
 			}
-			else if (command.indexOf("%") != -1) //percent cell
+			else // value cell ex: A3 = 3.0
 			{
-				
-			}
-			else // value cell
-			{
-				
+				String[] split = command.split(" ");
+				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+				int row = Integer.parseInt(split[0].substring(1)) - 1; 
+				String input = command.substring(command.indexOf("=") + 2);
+				/*System.out.println(input);*/
+				cellz[row][column] = new ValueCell(input); 
+				String result = getGridText();
+				return result;
 			}
 			
 		}
-		//Checkpoint 3 section
-		else if (command.indexOf("(") > -1) //if VALUECELL
+		else
 		{
-			return "";
+			return "invalid command";
 		}
-		/*else if (command.indexOf(ch))
-		{
-		
-		}*/
-		return "";
 	}
 	
 }

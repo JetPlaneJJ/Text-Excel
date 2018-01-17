@@ -79,7 +79,6 @@ public class Spreadsheet implements Grid
 		}
 		else if (command.length() <= 3 && command.length() > 0)
 		{
-			//cell inspection
 			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 			int row = Integer.parseInt(command.substring(1)) -1; 
 			if (cellz[row][column].fullCellText().equals("          ")) //if cell empty
@@ -88,9 +87,9 @@ public class Spreadsheet implements Grid
 			}
 			else
 			{
-				return "\"" + cellz[row][column].fullCellText() + "\"";
+				return cellz[row][column].fullCellText();
 			}
-			
+				
 		}
 		else if (command.toLowerCase().indexOf("clear ") != -1) //clearing 1 cell
 		{

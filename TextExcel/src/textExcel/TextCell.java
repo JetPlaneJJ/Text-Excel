@@ -30,6 +30,6 @@ public class TextCell implements Cell
 	}
 	public String fullCellText()
 	{
-			return string;
+		return "\"" + string + "\"";
 	}
 }

@@ -148,9 +148,13 @@ public class Spreadsheet implements Grid
 			}
 			
 		}
-		else
+		else if (command.length() > 0)
 		{
 			return "ERROR: Invalid command.";
+		}
+		else
+		{
+			return "";
 		}
 	}
 	

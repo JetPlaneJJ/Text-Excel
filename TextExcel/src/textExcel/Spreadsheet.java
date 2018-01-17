@@ -150,7 +150,7 @@ public class Spreadsheet implements Grid
 		}
 		else
 		{
-			return "";
+			return "ERROR: Invalid command.";
 		}
 	}
 	

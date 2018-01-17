@@ -21,7 +21,7 @@ public class PercentCell extends RealCell
 	{
 		//copied from TextCell method
 		String r = decimal.substring(0, decimal.indexOf(".")) + "%"; //ex: 89.55681% turns into 89%
-		int spacesneeded = 10 - decimal.length();
+		int spacesneeded = 10 - r.length();
 		if (r.length() < 10)
 		{
 			for (int x = 0; x < spacesneeded; x++)

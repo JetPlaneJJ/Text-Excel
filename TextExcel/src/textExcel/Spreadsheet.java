@@ -178,5 +178,9 @@ public class Spreadsheet implements Grid
 		{
 			return "ERROR: Invalid command.";
 		}
+		catch (NumberFormatException e)
+		{
+			return "ERROR: Invalid command.";
+		}
 	}
 }

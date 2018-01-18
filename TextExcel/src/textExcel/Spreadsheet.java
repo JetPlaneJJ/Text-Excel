@@ -135,16 +135,27 @@ public class Spreadsheet implements Grid
 				String result = getGridText();
 				return result;
 			}
-			else // value cell ex: A3 = 3.0
+			else if (command.contains("."))// value cell ex: A3 = 3.0
 			{
-				String[] split = command.split(" ");
-				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-				int row = Integer.parseInt(split[0].substring(1)) - 1; 
-				String input = command.substring(command.indexOf("=") + 2);
-				/*System.out.println(input);*/
-				cellz[row][column] = new ValueCell(input); 
-				String result = getGridText();
-				return result;
+				try
+				{
+					String[] split = command.split(" ");
+					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+					int row = Integer.parseInt(split[0].substring(1)) - 1; 
+					String input = command.substring(command.indexOf("=") + 2);
+					/*System.out.println(input);*/
+					cellz[row][column] = new ValueCell(input); 
+					String result = getGridText();
+					return result;
+				}
+				catch (NumberFormatException e)
+				{
+					return "ERROR: Invalid command.";
+				}
+			}
+			else
+			{
+				return "ERROR: Invalid command.";
 			}
 			
 		}

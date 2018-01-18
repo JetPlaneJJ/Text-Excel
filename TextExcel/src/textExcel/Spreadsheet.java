@@ -135,7 +135,7 @@ public class Spreadsheet implements Grid
 				String result = getGridText();
 				return result;
 			}
-			else if (command.contains("."))// value cell ex: A3 = 3.0
+			else // value cell ex: A3 = 3.0
 			{
 				try
 				{
@@ -152,10 +152,6 @@ public class Spreadsheet implements Grid
 				{
 					return "ERROR: Invalid command.";
 				}
-			}
-			else
-			{
-				return "ERROR: Invalid command.";
 			}
 			
 		}

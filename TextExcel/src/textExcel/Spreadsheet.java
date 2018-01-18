@@ -104,17 +104,25 @@ public class Spreadsheet implements Grid
 			}
 			else if (command.indexOf(" = ") != -1) //assignment to any cell
 			{
-				if (command.indexOf("\"") != -1) //assign TextCell ex: A1 = "something"
+				if (command.indexOf("\"") != -1 && command.substring(command.length()-1).equals("\""))
 				{
 					try
 					{
+						
 						String[] split = command.split(" ");
 						int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 						int row = Integer.parseInt(split[0].substring(1)) - 1; 
 						String input = command.substring(command.indexOf("=") + 3, command.length()-1);
-						cellz[row][column] = new TextCell(input); 
-						String result = getGridText();
-						return result;
+						if (command.substring(command.indexOf("=") + 2, command.indexOf("=") +3).equals("\""))
+						{
+							cellz[row][column] = new TextCell(input); 
+							String result = getGridText();
+							return result;
+						}
+						else
+						{
+							return "ERROR: Invalid command.";
+						}
 					}
 					catch (StringIndexOutOfBoundsException e)
 					{

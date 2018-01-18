@@ -170,5 +170,13 @@ public class Spreadsheet implements Grid
 		{
 			return "ERROR: Invalid command.";
 		}
+		catch (StringIndexOutOfBoundsException e)
+		{
+			return "ERROR: Invalid command.";
+		}
+		catch (AssertionError e)
+		{
+			return "ERROR: Invalid command.";
+		}
 	}
 }

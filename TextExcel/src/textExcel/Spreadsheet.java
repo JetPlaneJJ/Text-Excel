@@ -115,7 +115,7 @@ public class Spreadsheet implements Grid
 					String result = getGridText();
 					return result;
 				}
-				else if (command.indexOf("(") != -1) //formula cell, fix this next quarter
+				else if (command.indexOf("(") != -1 && command.contains(")")) //formula cell, fix this next quarter
 				{
 					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 					int row = Integer.parseInt(command.substring(1, command.indexOf(" "))) - 1; 

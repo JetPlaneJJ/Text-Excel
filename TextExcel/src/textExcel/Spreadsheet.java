@@ -64,105 +64,111 @@ public class Spreadsheet implements Grid
 	}
 	public String processCommand(String command)
 	{
-		if (command.toLowerCase().equals("clear"))
+		try
 		{
-			//clear the entire grid
-			for (int row = 0; row < cellz.length; row++)
+			if (command.toLowerCase().equals("clear"))
 			{
-				for (int col = 0; col < cellz[row].length; col++)
+				//clear the entire grid
+				for (int row = 0; row < cellz.length; row++)
 				{
-					cellz[row][col] = new EmptyCell();
+					for (int col = 0; col < cellz[row].length; col++)
+					{
+						cellz[row][col] = new EmptyCell();
+					}
 				}
-			}
-			String result = getGridText();
-			return result;
-		}
-		else if (command.length() <= 3 && command.length() > 0)
-		{
-			int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-			int row = Integer.parseInt(command.substring(1)) -1; 
-			if (cellz[row][column].fullCellText().equals("          ")) //if cell empty
-			{
-				return "";
-			}
-			else
-			{
-				return cellz[row][column].fullCellText();
-			}
-				
-		}
-		else if (command.toLowerCase().indexOf("clear ") != -1) //clearing 1 cell
-		{
-			String cellspecific = command.substring(command.indexOf(" ") + 1);
-			int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
-			int row = Integer.parseInt(cellspecific.substring(1)) -1;			
-			cellz[row][column] = new EmptyCell();
-			String result = getGridText();
-			return result;
-		}
-		else if (command.indexOf(" = ") != -1) //assignment to any cell
-		{
-			if (command.indexOf("\"") != -1) //assign TextCell ex: A1 = "something"
-			{
-				String[] split = command.split(" ");
-				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-				int row = Integer.parseInt(split[0].substring(1)) - 1; 
-				String input = command.substring(command.indexOf("=") + 3, command.length()-1);
-				
-				cellz[row][column] = new TextCell(input); 
 				String result = getGridText();
 				return result;
 			}
-			else if (command.indexOf("(") != -1) //formula cell, fix this next quarter
+			else if (command.length() <= 3 && command.length() > 0)
 			{
 				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-				int row = Integer.parseInt(command.substring(1, command.indexOf(" "))) - 1; 
-				String input = command.substring(command.indexOf("=") + 2, command.length());
-				
-				cellz[row][column] = new FormulaCell(input); 
+				int row = Integer.parseInt(command.substring(1)) -1; 
+				if (cellz[row][column].fullCellText().equals("          ")) //if cell empty
+				{
+					return "";
+				}
+				else
+				{
+					return cellz[row][column].fullCellText();
+				}
+					
+			}
+			else if (command.toLowerCase().indexOf("clear ") != -1) //clearing 1 cell
+			{
+				String cellspecific = command.substring(command.indexOf(" ") + 1);
+				int column = getColumnNumberFromColumnLetter(cellspecific.substring(0, 1));
+				int row = Integer.parseInt(cellspecific.substring(1)) -1;			
+				cellz[row][column] = new EmptyCell();
 				String result = getGridText();
 				return result;
-				
 			}
-			else if (command.indexOf("%") != -1) //percent cell ex: A1 = 45.0%
+			else if (command.indexOf(" = ") != -1) //assignment to any cell
 			{
-				String[] split = command.split(" ");
-				int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-				int row = Integer.parseInt(split[0].substring(1)) - 1; 
-				String input = command.substring(command.indexOf("=") + 2, command.length());
-				
-				cellz[row][column] = new PercentCell(input); 
-				String result = getGridText();
-				return result;
-			}
-			else // value cell ex: A3 = 3.0
-			{
-				try
+				if (command.indexOf("\"") != -1) //assign TextCell ex: A1 = "something"
 				{
 					String[] split = command.split(" ");
 					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 					int row = Integer.parseInt(split[0].substring(1)) - 1; 
-					String input = command.substring(command.indexOf("=") + 2);
-					/*System.out.println(input);*/
-					cellz[row][column] = new ValueCell(input); 
+					String input = command.substring(command.indexOf("=") + 3, command.length()-1);
+					
+					cellz[row][column] = new TextCell(input); 
 					String result = getGridText();
 					return result;
 				}
-				catch (NumberFormatException e)
+				else if (command.indexOf("(") != -1) //formula cell, fix this next quarter
 				{
-					return "ERROR: Invalid command.";
+					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+					int row = Integer.parseInt(command.substring(1, command.indexOf(" "))) - 1; 
+					String input = command.substring(command.indexOf("=") + 2, command.length());
+					
+					cellz[row][column] = new FormulaCell(input); 
+					String result = getGridText();
+					return result;
+					
 				}
+				else if (command.indexOf("%") != -1) //percent cell ex: A1 = 45.0%
+				{
+					String[] split = command.split(" ");
+					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+					int row = Integer.parseInt(split[0].substring(1)) - 1; 
+					String input = command.substring(command.indexOf("=") + 2, command.length());
+					
+					cellz[row][column] = new PercentCell(input); 
+					String result = getGridText();
+					return result;
+				}
+				else // value cell ex: A3 = 3.0
+				{
+					try
+					{
+						String[] split = command.split(" ");
+						int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+						int row = Integer.parseInt(split[0].substring(1)) - 1; 
+						String input = command.substring(command.indexOf("=") + 2);
+						/*System.out.println(input);*/
+						cellz[row][column] = new ValueCell(input); 
+						String result = getGridText();
+						return result;
+					}
+					catch (NumberFormatException e)
+					{
+						return "ERROR: Invalid command.";
+					}
+				}
+				
 			}
-			
+			else if (command.length() > 0)
+			{
+				return "ERROR: Invalid command.";
+			}
+			else
+			{
+				return "";
+			}
 		}
-		else if (command.length() > 0)
+		catch (ArrayIndexOutOfBoundsException e)
 		{
 			return "ERROR: Invalid command.";
 		}
-		else
-		{
-			return "";
-		}
 	}
-	
 }

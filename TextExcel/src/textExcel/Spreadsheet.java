@@ -112,9 +112,6 @@ public class Spreadsheet implements Grid
 						int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 						int row = Integer.parseInt(split[0].substring(1)) - 1; 
 						String input = command.substring(command.indexOf("=") + 3, command.length()-1);
-						//delet this later
-						String checkforsecondquotationmark = input.substring(0, input.indexOf("\""));
-						//
 						cellz[row][column] = new TextCell(input); 
 						String result = getGridText();
 						return result;

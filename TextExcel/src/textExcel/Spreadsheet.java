@@ -1,5 +1,9 @@
 package textExcel;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Spreadsheet implements Grid
 {
 	private Cell[][] cellz;
@@ -150,6 +154,35 @@ public class Spreadsheet implements Grid
 					cellz[row][column] = new PercentCell(input); 
 					String result = getGridText();
 					return result;
+				}
+				else if (command.contains("save")) //ex: save myData.csv for saving extra credit
+				{
+					String filename = command.substring(command.indexOf(" ")+1, command.indexOf("."));
+					File file = new File (filename);
+					try
+					{
+						FileWriter fw = new FileWriter (filename);
+						for (int row = 0; row < 20; row++)
+						{
+							for (int col = 0; col < cellz[row].length; col++)
+							{
+								if (!cellz[row][col].fullCellText().equals("          "))
+								{
+									fw.write(cellz[row][col] + ","); //A1
+									fw.write(cellz[row][col].getClass() + ","); //TextCell
+									fw.write(cellz[row][col].fullCellText()); //contents of the cell
+									fw.write("\n");
+								}
+							}
+						}
+						fw.close();
+						return getGridText();
+					}
+					catch (IOException e)
+					{
+						e.printStackTrace();
+						return getGridText();
+					}
 				}
 				else // value cell ex: A3 = 3.0
 				{

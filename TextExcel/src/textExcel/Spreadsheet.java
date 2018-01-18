@@ -106,14 +106,21 @@ public class Spreadsheet implements Grid
 			{
 				if (command.indexOf("\"") != -1) //assign TextCell ex: A1 = "something"
 				{
-					String[] split = command.split(" ");
-					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
-					int row = Integer.parseInt(split[0].substring(1)) - 1; 
-					String input = command.substring(command.indexOf("=") + 3, command.length()-1);
-					
-					cellz[row][column] = new TextCell(input); 
-					String result = getGridText();
-					return result;
+					try
+					{
+						String[] split = command.split(" ");
+						int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
+						int row = Integer.parseInt(split[0].substring(1)) - 1; 
+						String input = command.substring(command.indexOf("=") + 3, command.length()-1);
+						
+						cellz[row][column] = new TextCell(input); 
+						String result = getGridText();
+						return result;
+					}
+					catch (StringIndexOutOfBoundsException e)
+					{
+						return "ERROR: Invalid command.";
+					}
 				}
 				else if (command.indexOf("(") != -1 && command.contains(")")) //formula cell, fix this next quarter
 				{

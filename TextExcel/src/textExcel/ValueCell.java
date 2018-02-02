@@ -2,13 +2,11 @@ package textExcel;
 
 public class ValueCell extends RealCell
 {
-	private double value = 0.0;
 	private String string = "";
 	public ValueCell(String input)
 	{
 		super(input);
 		this.string = input;
-		this.value = Double.parseDouble(input);
 	}
 	
 	public String abbreviatedCellText()
@@ -33,13 +31,12 @@ public class ValueCell extends RealCell
 	@Override
 	public double getDoubleValue()
 	{
-		return value;
+		return Double.parseDouble(string);
 	}
 
 	@Override
 	public String fullCellText()
 	{
-		// TODO Auto-generated method stub
 		return string;
 	}
 

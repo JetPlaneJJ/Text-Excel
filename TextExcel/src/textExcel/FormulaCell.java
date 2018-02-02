@@ -14,15 +14,26 @@ public class FormulaCell extends RealCell
 	@Override
 	public double getDoubleValue()
 	{
-		// TODO Auto-generated method stub
-		return 0; //this is only okay for Checkpoint 3
+		return super.getDoubleValue(); //this is only okay for Checkpoint 3
 	}
 
 	@Override
 	public String abbreviatedCellText()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String s = getDoubleValue() + "";
+		int spacesneeded = (int) (10 - s.length());
+		if (s.length() < 10)
+		{
+			for (int x = 0; x < spacesneeded; x++)
+			{
+				s += " ";
+			}
+		}
+		else if (s.length() > 10)
+		{
+			s = s.substring(0, 10);
+		}
+		return s;
 	}
 
 	@Override

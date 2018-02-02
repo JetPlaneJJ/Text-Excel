@@ -2,13 +2,9 @@ package textExcel;
 
 public class FormulaCell extends RealCell
 {
-	private String string = "";
-	
 	public FormulaCell(String input)
 	{
 		super(input);
-		this.string = input;
-	
 	}
 
 	@Override
@@ -40,7 +36,7 @@ public class FormulaCell extends RealCell
 	public String fullCellText()
 	{
 		// TODO Auto-generated method stub
-		return string;
+		return super.fullCellText();
 	}
 
 }

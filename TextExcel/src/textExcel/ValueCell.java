@@ -2,42 +2,27 @@ package textExcel;
 
 public class ValueCell extends RealCell
 {
-	private String string = "";
+	//don't need to store strings!
 	public ValueCell(String input)
 	{
 		super(input);
-		this.string = input;
 	}
 	
 	public String abbreviatedCellText()
 	{
-		//copied from TextCell method
-		int spacesneeded = 10 - this.string.length();
-		String result = this.string;
-		if (result.length() < 10)
-		{
-			for (int x = 0; x < spacesneeded; x++)
-			{
-				result += " ";
-			}
-		}
-		else if (result.length() > 10)
-		{
-			result = result.substring(0, 10);
-		}
-		return result;
+		return super.abbreviatedCellText();
 	}
 	
 	@Override
 	public double getDoubleValue()
 	{
-		return Double.parseDouble(string);
+		return super.getDoubleValue();
 	}
 
 	@Override
 	public String fullCellText()
 	{
-		return string;
+		return super.fullCellText();
 	}
 
 }

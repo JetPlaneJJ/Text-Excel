@@ -11,7 +11,7 @@ public class PercentCell extends RealCell
 	public String abbreviatedCellText()
 	{
 		//copied from TextCell method
-		String original = fullCellText();
+		String original = super.fullCellText();
 		String r = original.substring(0, original.indexOf(".")) + "%"; //ex: 89.55681% turns into 89%
 		int spacesneeded = 10 - r.length();
 		if (r.length() < 10)
@@ -32,8 +32,9 @@ public class PercentCell extends RealCell
 	public String fullCellText()
 	{
 		//returns the percent in decimal form
-		String x = super.fullCellText().substring(0, super.fullCellText().length()-1);
-		return Double.parseDouble(x)/100 + "";
+		String original = super.fullCellText();
+		String x = original.substring(0, original.length()-1);
+		return Double.parseDouble(x)/100.0 + "";
 	}
 
 	@Override

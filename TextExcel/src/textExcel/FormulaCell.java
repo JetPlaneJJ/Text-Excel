@@ -60,7 +60,7 @@ public class FormulaCell extends RealCell
 	@Override
 	public String fullCellText()
 	{
-		return super.fullCellText();
+		return super.fullCellText().substring(super.fullCellText().indexOf("("));
 	}
 
 }

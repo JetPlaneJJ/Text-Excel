@@ -11,7 +11,6 @@ public class FormulaCell extends RealCell
 	public double getDoubleValue() 
 	{
 		double result = 0.0;
-		//Part B-1: For example, you will need to evaluate a formula like: ( 4 – 5.6 * 2 / 4 ), but not like ( 4 - A1 * 3 )  or ( AVG A2-A5 ).
 		String substringed = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
 		String[] arr = substringed.split(" "); //ex: {1, +, 3, +, 2, *, 6} even numbers are # values, odd = operation
 		result += Double.parseDouble(arr[0]);

@@ -33,6 +33,7 @@ public class FormulaCell extends RealCell
 			else if (arr[x+1].equals("/"))
 			{
 				result /= b;
+				// :)
 			}
 		}
 		return result;

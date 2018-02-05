@@ -19,22 +19,22 @@ public class FormulaCell extends RealCell
 			if (arr[x+1].equals("+"))
 			{
 				result += b;
-				System.out.println(result + " = result ++");
+				/*System.out.println(result + " = result ++");*/
 			}
 			else if (arr[x+1].equals("*"))
 			{
 				result *= b;
-				System.out.println(result + " = result **");
+				/*System.out.println(result + " = result **");*/
 			}
 			else if (arr[x+1].equals("-"))
 			{
 				result -= b;
-				System.out.println(result + " = result --");
+				//System.out.println(result + " = result --");
 			}
 			else if (arr[x+1].equals("/"))
 			{
 				result /= b;
-				System.out.println(result + " = result //");
+				//System.out.println(result + " = result //");
 			}
 		}
 		return result;

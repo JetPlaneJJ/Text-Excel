@@ -11,10 +11,10 @@ public class FormulaCell extends RealCell
 	public double getDoubleValue() 
 	{
 		double result = 0.0;
-		String substringed = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
-		String[] arr = substringed.split(" "); //ex: {1, +, 3, +, 2, *, 6} even numbers are # values, odd = operation
+		String noparan = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
+		String[] arr = noparan.split(" "); //ex: {1, +, 3, +, 2, *, 6} even numbers are # values, odd = operation
 		result += Double.parseDouble(arr[0]);
-		for (int x = 0; x < arr.length/2 + 1; x+=2) 
+		for (int x = 0; x < arr.length/2; x+=2) 
 		{
 			double b = Double.parseDouble(arr[x + 2]);
 			if (arr[x+1].equals("+"))
@@ -32,7 +32,6 @@ public class FormulaCell extends RealCell
 			else if (arr[x+1].equals("/"))
 			{
 				result /= b;
-				// :)
 			}
 		}
 		return result;

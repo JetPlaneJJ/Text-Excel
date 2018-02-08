@@ -3,7 +3,7 @@ package textExcel;
 public class FormulaCell extends RealCell
 {
 	/*o	The Spreadsheet can pass a pointer to itself as a parameter you add to the FormulaCell constructor.  (Remember to use the keyword “this” discussed in class.)
-	 * */
+	 */
 	public FormulaCell(String input)
 	{
 		super(input);

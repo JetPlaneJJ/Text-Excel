@@ -2,9 +2,9 @@ package textExcel;
 
 public class FormulaCell extends RealCell
 {
-	public FormulaCell(String input)
+	public FormulaCell(String command, Spreadsheet s)
 	{
-		super(input);
+		super(command);
 	}
 
 	@Override
@@ -13,6 +13,10 @@ public class FormulaCell extends RealCell
 		String noparan = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
 		double result = 0.0;
 		String[] arr = noparan.split(" "); //ex: AVG, A1-A5 or 1, +, 2
+		
+		
+		//Cell cell s.getCell(s);
+		
 		
 		// if contains SUM or AVG example: C12 = ( AVG A1-A5 ) this goes through the A column from 1 - 5 inclusive
 		if (arr[0].equals("SUM") || arr[0].equals("AVG"))

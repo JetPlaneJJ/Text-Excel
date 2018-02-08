@@ -2,8 +2,6 @@ package textExcel;
 
 public class FormulaCell extends RealCell
 {
-	/*o	The Spreadsheet can pass a pointer to itself as a parameter you add to the FormulaCell constructor.  (Remember to use the keyword “this” discussed in class.)
-	 */
 	public FormulaCell(String input)
 	{
 		super(input);
@@ -29,10 +27,14 @@ public class FormulaCell extends RealCell
 			}
 			return result;
 		}
+		
 		//has a cell reference?
+		for (int a = 0; a < arr.length; a++)
+		{
+			//if arr[x] is a Cell Name, then change from that cell name to a DOUBLE VALUE within the array
+		}
 		
-		
-		//if no cell references at all
+		//if no cell references at all or after changing all cell refs to double
 		result += Double.parseDouble(arr[0]);
 		for (int x = 0; x < arr.length-1; x += 2) 
 		{

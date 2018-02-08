@@ -2,7 +2,9 @@ package textExcel;
 
 public class FormulaCell extends RealCell
 {
-	public FormulaCell(String input) //ex: A1 = ( 1 + 3 + 2 * 6 ) assume no cell ref for Checkpoint 1 Part B
+	/*o	The Spreadsheet can pass a pointer to itself as a parameter you add to the FormulaCell constructor.  (Remember to use the keyword “this” discussed in class.)
+	 * */
+	public FormulaCell(String input)
 	{
 		super(input);
 	}
@@ -11,9 +13,29 @@ public class FormulaCell extends RealCell
 	public double getDoubleValue() 
 	{
 		String noparan = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
-		String[] arr = noparan.split(" "); //ex: {1, +, 3, +, 2, *, 6} even numbers are # values, odd = operation
+		
+		// if contains SUM or AVG example: C12 = ( AVG A1-A5 )
+		if (noparan.contains("SUM") || noparan.contains("AVG"))
+		{
+			double result = 0.0;
+			if (noparan.contains("SUM"))
+			{
+				//get the A1 --> A5 values int columnofthefirstcell = noparan.substring(4,5);
+				
+			}
+			else if (noparan.contains("SUM"))
+			{
+				
+			}
+			return result;
+		}
+		//has a cell reference?
+		
+		
+		//if no cell references at all
+		String[] arr = noparan.split(" "); 
 		double result = Double.parseDouble(arr[0]);
-		for (int x = 0; x < arr.length-1; x += 2) //7/2+1=4 3/2+1
+		for (int x = 0; x < arr.length-1; x += 2) 
 		{
 			double b = Double.parseDouble(arr[x+2]);
 			if (arr[x+1].equals("+"))

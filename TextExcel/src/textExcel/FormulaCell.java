@@ -13,19 +13,19 @@ public class FormulaCell extends RealCell
 	public double getDoubleValue() 
 	{
 		String noparan = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
+		double result = 0.0;
+		String[] arr = noparan.split(" "); //ex: AVG, A1-A5 or 1, +, 2
 		
-		// if contains SUM or AVG example: C12 = ( AVG A1-A5 )
-		if (noparan.contains("SUM") || noparan.contains("AVG"))
+		// if contains SUM or AVG example: C12 = ( AVG A1-A5 ) this goes through the A column from 1 - 5 inclusive
+		if (arr[0].equals("SUM") || arr[0].equals("AVG"))
 		{
-			double result = 0.0;
-			if (noparan.contains("SUM"))
+			int countCells = 0;
+			//add everything together since AVG also needs the total anyway
+			
+			
+			if (arr[0].equals("AVG"))
 			{
-				//get the A1 --> A5 values int columnofthefirstcell = noparan.substring(4,5);
-				
-			}
-			else if (noparan.contains("SUM"))
-			{
-				
+				result /= countCells;
 			}
 			return result;
 		}
@@ -33,8 +33,7 @@ public class FormulaCell extends RealCell
 		
 		
 		//if no cell references at all
-		String[] arr = noparan.split(" "); 
-		double result = Double.parseDouble(arr[0]);
+		result += Double.parseDouble(arr[0]);
 		for (int x = 0; x < arr.length-1; x += 2) 
 		{
 			double b = Double.parseDouble(arr[x+2]);

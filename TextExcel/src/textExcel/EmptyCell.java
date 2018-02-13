@@ -18,4 +18,11 @@ public class EmptyCell implements Cell
 		
 		return "          "; 	
 	}
+	@Override
+	public double getDoubleValue()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

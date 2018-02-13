@@ -32,4 +32,11 @@ public class TextCell implements Cell
 	{
 		return "\"" + string + "\"";
 	}
+
+	@Override
+	public double getDoubleValue()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

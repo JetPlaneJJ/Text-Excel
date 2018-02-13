@@ -125,7 +125,7 @@ public class Spreadsheet implements Grid
 						return "ERROR: Invalid command.";
 					}
 				}
-				else if (command.indexOf("(") != -1 && command.contains(")")) //PARATHESES
+				else if (command.indexOf("(") != -1 && command.contains(")")) //PARANTHESES
 				{
 					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 					int row = Integer.parseInt(command.substring(1, command.indexOf(" "))) - 1; 

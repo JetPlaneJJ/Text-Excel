@@ -31,8 +31,7 @@ public abstract class RealCell implements Cell
 	{
 		return this.string;
 	}
-	
-	//It also needs a getDoubleValue method that returns the calculated value of the cell.
+
 	public double getDoubleValue()
 	{
 		double d = Double.parseDouble(this.string);

@@ -16,7 +16,7 @@ public class FormulaCell extends RealCell
 		double result = 0.0;
 		String[] arr = noparan.split(" ");		
 		
-		if (arr[0].equals("SUM") || arr[0].equals("AVG")) //FIX THIS!!!
+		if (arr[0].toUpperCase().equals("SUM") || arr[0].toUpperCase().equals("AVG")) //FIX THIS!!!
 		{
 			int countCells = 0;
 			if (arr[1].contains("-")) //if multiple cells

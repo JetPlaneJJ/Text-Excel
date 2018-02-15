@@ -2,9 +2,7 @@ package textExcel;
 
 public class FormulaCell extends RealCell
 {
-	//field, SPREADSHEET
 	private Spreadsheet s;
-	
 	public FormulaCell(String command, Spreadsheet s)
 	{
 		super(command);
@@ -16,25 +14,36 @@ public class FormulaCell extends RealCell
 	{
 		String noparan = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
 		double result = 0.0;
-		String[] arr = noparan.split(" ");
+		String[] arr = noparan.split(" ");		
 		
-		//change all cell references to double values
-		for (int a = 0; a < arr.length; a++)
-		{
-			if (isCellReference(arr[a]) && !arr[a].equals("SUM") && !arr[a].equals("AVG"))
-			{
-				SpreadsheetLocation x = new SpreadsheetLocation(arr[a]);
-				Cell c = this.s.getCell(x);
-				arr[a] = c.getDoubleValue() + "";
-			}
-		}
 		if (arr[0].equals("SUM") || arr[0].equals("AVG")) //FIX THIS!!!
 		{
-			//example AVG, A1-A5
 			int countCells = 0;
-			for (int a = 0; a < arr.length; a++)
+			if (arr[1].contains("-")) //if multiple cells
+			{	
+				SpreadsheetLocation start = new SpreadsheetLocation(arr[1].substring(0, arr[1].indexOf("-"))); 
+				int startrow = start.getRow();
+				int startcol = start.getCol();
+				SpreadsheetLocation end = new SpreadsheetLocation(arr[1].substring(arr[1].indexOf("-")+1));
+				int endrow = end.getRow();
+				int endcol = end.getCol();
+				for (int rows = startrow; rows <= endrow; rows++) //go thru all cells between start and end
+				{
+					for (int cols = startcol; cols <= endcol; cols++)
+					{
+						String currentcellname = Spreadsheet.getColumnLetterFromColumnNumber(cols)+""+(rows+1);
+						SpreadsheetLocation current = new SpreadsheetLocation(currentcellname);
+						Cell c = this.s.getCell(current); 
+						result += c.getDoubleValue();
+						countCells++;
+					}
+				}
+			}
+			else if (arr[1].length() <= 3) 
 			{
-				
+				SpreadsheetLocation x = new SpreadsheetLocation(arr[1]);
+				Cell a = this.s.getCell(x);
+				result += a.getDoubleValue();
 			}
 			if (arr[0].equals("AVG"))
 			{
@@ -42,8 +51,18 @@ public class FormulaCell extends RealCell
 			}
 			return result;
 		}
-		//if no cell references at all or after changing all cell refs to double
+		
+		for (int a = 0; a < arr.length; a++)
+		{	
+			if (isCellReference(arr[a]))
+			{
+				SpreadsheetLocation x = new SpreadsheetLocation(arr[a]);
+				Cell c = this.s.getCell(x);
+				arr[a] = c.getDoubleValue() + "";
+			}
+		}
 		result += Double.parseDouble(arr[0]);
+		
 		for (int x = 0; x < arr.length-1; x += 2) 
 		{
 			double b = Double.parseDouble(arr[x+2]);
@@ -96,5 +115,4 @@ public class FormulaCell extends RealCell
 	{
 	    return Character.isLetter(input.charAt(0));
 	}
-
 }

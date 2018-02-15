@@ -21,8 +21,7 @@ public class EmptyCell implements Cell
 	@Override
 	public double getDoubleValue()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return 0.0;
 	}
 	
 }

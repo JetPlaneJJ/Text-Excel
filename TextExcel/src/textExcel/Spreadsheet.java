@@ -129,7 +129,6 @@ public class Spreadsheet implements Grid
 				{
 					int column = getColumnNumberFromColumnLetter(command.substring(0, 1));
 					int row = Integer.parseInt(command.substring(1, command.indexOf(" "))) - 1; 
-					/*String input = command.substring(command.indexOf("=") + 2, command.length());*/
 					cellz[row][column] = new FormulaCell(command, this); 
 					String result = getGridText();
 					return result;

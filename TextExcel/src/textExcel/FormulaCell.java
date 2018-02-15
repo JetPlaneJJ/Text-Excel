@@ -42,7 +42,7 @@ public class FormulaCell extends RealCell
 			else if (arr[1].length() <= 3) 
 			{
 				SpreadsheetLocation x = new SpreadsheetLocation(arr[1]);
-				Cell a = this.s.getCell(x);
+				Cell a = s.getCell(x);
 				result += a.getDoubleValue();
 			}
 			if (arr[0].equals("AVG"))

@@ -34,8 +34,12 @@ public abstract class RealCell implements Cell
 
 	public double getDoubleValue()
 	{
-		double d = Double.parseDouble(this.string);
-		return d;
+		if (this.string.length() > 0)
+		{
+			double d = Double.parseDouble(this.string);
+			return d;
+		}
+		return 0.0;
 	}
 
 }

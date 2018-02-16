@@ -14,8 +14,9 @@ public class FormulaCell extends RealCell
 	{
 		String noparan = super.fullCellText().substring(super.fullCellText().indexOf("(") + 2, super.fullCellText().indexOf(")")-1); 
 		double result = 0.0;
-		String[] arr = noparan.split(" ");		
+		String[] arr = noparan.split(" ");	
 		
+		//checking if SUM or AVG
 		if (arr[0].toUpperCase().equals("SUM") || arr[0].toUpperCase().equals("AVG")) //FIX THIS!!!
 		{
 			int countCells = 0;
@@ -33,7 +34,7 @@ public class FormulaCell extends RealCell
 					{
 						String currentcellname = Spreadsheet.getColumnLetterFromColumnNumber(cols)+""+(rows+1);
 						SpreadsheetLocation current = new SpreadsheetLocation(currentcellname);
-						Cell c = this.s.getCell(current); 
+						RealCell c = (RealCell) s.getCell(current); 
 						result += c.getDoubleValue();
 						countCells++;
 					}
@@ -41,9 +42,13 @@ public class FormulaCell extends RealCell
 			}
 			else if (arr[1].length() <= 3) 
 			{
+				//need to ask Spreadsheet for the Cell at that location (using the Spreadsheet’s getCell method)
 				SpreadsheetLocation x = new SpreadsheetLocation(arr[1]);
-				Cell a = s.getCell(x);
-				result += a.getDoubleValue();
+				//cast the resulting Cell to a RealCell
+				RealCell c = (RealCell) s.getCell(x);
+				//call its getDoubleValue method to get the cell’s value.
+				result += c.getDoubleValue(); //this is getting  an error
+				countCells++;
 			}
 			if (arr[0].equals("AVG"))
 			{
@@ -52,17 +57,19 @@ public class FormulaCell extends RealCell
 			return result;
 		}
 		
+		//checking cell references
 		for (int a = 0; a < arr.length; a++)
 		{	
 			if (isCellReference(arr[a]))
 			{
 				SpreadsheetLocation x = new SpreadsheetLocation(arr[a]);
-				Cell c = this.s.getCell(x);
+				RealCell c = (RealCell) s.getCell(x);
 				arr[a] = c.getDoubleValue() + "";
 			}
 		}
-		result += Double.parseDouble(arr[0]);
 		
+		result += Double.parseDouble(arr[0]);
+		//going thru the ( 3 + A2 + 5 )
 		for (int x = 0; x < arr.length-1; x += 2) 
 		{
 			double b = Double.parseDouble(arr[x+2]);

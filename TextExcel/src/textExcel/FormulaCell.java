@@ -42,11 +42,9 @@ public class FormulaCell extends RealCell
 			}
 			else if (arr[1].length() <= 3) 
 			{
-				//need to ask Spreadsheet for the Cell at that location (using the Spreadsheet’s getCell method)
 				SpreadsheetLocation x = new SpreadsheetLocation(arr[1]);
 				//cast the resulting Cell to a RealCell
 				RealCell c = (RealCell) s.getCell(x);
-				//call its getDoubleValue method to get the cell’s value.
 				result += c.getDoubleValue(); //this is getting  an error
 				countCells++;
 			}

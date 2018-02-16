@@ -34,7 +34,7 @@ public class FormulaCell extends RealCell
 					{
 						String currentcellname = Spreadsheet.getColumnLetterFromColumnNumber(cols)+""+(rows+1);
 						SpreadsheetLocation current = new SpreadsheetLocation(currentcellname);
-						RealCell c = (RealCell) s.getCell(current); 
+						Cell c = s.getCell(current); 
 						result += c.getDoubleValue();
 						countCells++;
 					}
@@ -43,8 +43,7 @@ public class FormulaCell extends RealCell
 			else if (arr[1].length() <= 3) 
 			{
 				SpreadsheetLocation x = new SpreadsheetLocation(arr[1]);
-				//cast the resulting Cell to a RealCell
-				RealCell c = (RealCell) s.getCell(x);
+				Cell c = s.getCell(x);
 				result += c.getDoubleValue(); //this is getting  an error
 				countCells++;
 			}
@@ -61,7 +60,7 @@ public class FormulaCell extends RealCell
 			if (isCellReference(arr[a]))
 			{
 				SpreadsheetLocation x = new SpreadsheetLocation(arr[a]);
-				RealCell c = (RealCell) s.getCell(x);
+				Cell c = s.getCell(x);
 				arr[a] = c.getDoubleValue() + "";
 			}
 		}

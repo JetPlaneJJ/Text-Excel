@@ -28,18 +28,16 @@ public class FormulaCell extends RealCell
 				SpreadsheetLocation end = new SpreadsheetLocation(arr[1].substring(arr[1].indexOf("-")+1));
 				int endrow = end.getRow();
 				int endcol = end.getCol();
-				System.out.println("startrow is " + startrow + " startcol is " + startcol);
-				System.out.println("endrow is " + endrow + " endcol is " + endcol);
+				/*System.out.println("startrow is " + startrow + " startcol is " + startcol);
+				System.out.println("endrow is " + endrow + " endcol is " + endcol);*/
 				for (int rows = startrow; rows <= endrow; rows++) //go thru all cells between start and end
 				{
 					for (int cols = startcol; cols <= endcol; cols++)
 					{				
 						String currentcellname = Spreadsheet.getColumnLetterFromColumnNumber(cols)+""+(rows+1);
-						System.out.println(currentcellname);
 						SpreadsheetLocation current = new SpreadsheetLocation(currentcellname);
 						Cell c = s.getCell(current); 
 						result += c.getDoubleValue();
-						System.out.println(result + " ddqf");
 						countCells++;
 					}
 				}

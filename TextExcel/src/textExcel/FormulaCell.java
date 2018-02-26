@@ -50,7 +50,7 @@ public class FormulaCell extends RealCell
 				countCells++;
 			}
 			
-			if (arr[0].equals("AVG"))
+			if (arr[0].toUpperCase().equals("AVG"))
 			{
 				result /= countCells;
 			}
